@@ -9,8 +9,6 @@ pool:
 steps:
 - script: |
     echo "Running Lacework IaC checks."
-    echo $(Build.SourcesDirectory)
-    ls $(Build.SourcesDirectory)
     docker run \
         -e SCAN_COMMAND=tf-scan \
         -e LW_ACCOUNT=$(LW_ACCOUNT) \
