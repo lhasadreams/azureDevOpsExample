@@ -1,0 +1,21 @@
+# Lacework IAC Code SCan pipeline
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    echo "Running Lacework IaC checks."
+    docker run \
+        -e SCAN_COMMAND=tf-scan \
+        -e LW_ACCOUNT=$(LW_ACCOUNT) \
+        -e LW_API_KEY=$(LW_API_KEY) \
+        -e LW_API_SECRET=$(LW_API_SECRET) \
+        -v $(Build.SourcesDirectory):/app/src \
+        -e WORKSPACE=src \
+        -e EXIT_FLAG='high' \
+        docker.io/lacework/codesec-iac:latest
+  displayName: 'Run a Lacework IAC Scan'
