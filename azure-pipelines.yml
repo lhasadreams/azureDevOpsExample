@@ -15,7 +15,7 @@ steps:
         -e LW_SUBACCOUNT=$(LW_SUBACCOUNT) \
         -e LW_API_KEY=$(LW_API_KEY) \
         -e LW_API_SECRET=$(LW_API_SECRET) \
-        -v $(Build.SourcesDirectory):/terraform \
+        -v $(Build.SourcesDirectory):/terraforms \
         -e WORKSPACE=src \
         -e EXIT_FLAG='high' \
         docker.io/lacework/codesec-iac:latest
