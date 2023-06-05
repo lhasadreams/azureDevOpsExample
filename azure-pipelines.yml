@@ -14,8 +14,7 @@ steps:
         -e LW_ACCOUNT=$(LW_ACCOUNT) \
         -e LW_API_KEY=$(LW_API_KEY) \
         -e LW_API_SECRET=$(LW_API_SECRET) \
-        -v $(Build.SourcesDirectory):/app \
-        -e WORKSPACE=src \
+        -v $(Build.SourcesDirectory):/app/data \
         -e EXIT_FLAG='high' \
         docker.io/lacework/codesec-iac:latest
   displayName: 'Run a Lacework IAC Scan'
